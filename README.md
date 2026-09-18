@@ -2,7 +2,7 @@
 
 # 
 
-# A collection of simulated support tickets — Linux, AWS, and networking incidents diagnosed and resolved end-to-end, each documented as a structured Root Cause Analysis (RCA).
+# A collection of simulated support tickets — Linux, AWS, and networking incidents tracked through a full ticket lifecycle in Spiceworks Cloud Help Desk, diagnosed and resolved end-to-end, and documented as a structured Root Cause Analysis (RCA) for each.
 
 # 
 
@@ -10,9 +10,9 @@
 
 # 
 
-# | # | Title | Category | Status |
+# | # | Title | Category | Ticket | Status |
 
-# |---|-------|----------|--------|
+# |---|-------|----------|--------|--------|
 
-# | 1 | \[SSH Connection Timed Out vs. Permission Denied](linux/01-ssh-timeout-vs-permission-denied/RCA.md) | Linux | Resolved |
+# | 1 | \[SSH Connection Timed Out vs. Permission Denied](linux/01-ssh-timeout-vs-permission-denied/RCA.md) | Linux | Spiceworks #3 | Resolved |
 
