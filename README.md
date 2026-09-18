@@ -14,5 +14,5 @@
 
 # |---|-------|----------|--------|
 
-# | 1 | SSH Connection Timed Out vs. Permission Denied | Linux | Not started |
+# | 1 | \[SSH Connection Timed Out vs. Permission Denied](linux/01-ssh-timeout-vs-permission-denied/RCA.md) | Linux | Resolved |
 
