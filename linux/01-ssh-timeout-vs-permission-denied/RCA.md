@@ -20,12 +20,16 @@ Investigation surfaced two independent failure modes on the same instance — th
 - Result: `ssh: connect to host <EC2_PUBLIC_IP> port 22: Connection timed out`.
 - This eliminates auth, DNS, and the instance itself as causes — the TCP handshake never completed, meaning the packet was silently dropped before reaching sshd. That signature is specific to a stateful firewall drop (Security Group), not a refused connection.
 
+![Connection hangs and times out — no RST returned, indicating a silent firewall drop rather than a refused connection](screenshots/01-error-connection-timeout.png)
+
 **Issue 2 — Permission denied (publickey) (surfaced during retest, not part of the original ticket)**
 - Restored the port 22 rule, confirmed login worked.
 - Ran `chmod 777 ~/.ssh/authorized_keys` on the instance.
 - Ran `ssh -i cloud-lab-key.pem ubuntu@<EC2_PUBLIC_IP>`.
 - Result: `ubuntu@<EC2_PUBLIC_IP>: Permission denied (publickey)`.
 - This eliminates the network layer — the TCP/SSH handshake completed and the server actively responded with a rejection, rather than staying silent. `sshd` refuses to trust an `authorized_keys` file that's group- or world-writable, regardless of whether the key itself is valid.
+
+![The server responds and rejects the key, proving the connection reached sshd — an auth-layer failure, not a network one](screenshots/02-error-permission-denied.png)
 
 ## 4. Root Cause
 Two independent causes producing two distinguishable errors:
@@ -39,7 +43,6 @@ Two independent causes producing two distinguishable errors:
 - Logged the full triage summary as an internal note on Spiceworks ticket #3 and closed the ticket once both fixes were confirmed.
 - **Prevention:** monitor Security Group changes via CloudTrail/EventBridge for unexpected rule deletions; a bootstrap script or `cron` check could periodically enforce `600` on `authorized_keys` to catch accidental `chmod` mistakes before they lock out access.
 
-![Connection timed out](screenshots/01-error-connection-timeout.png)
-![Permission denied](screenshots/02-error-permission-denied.png)
-![Verified login](screenshots/03-verified-login-success.png)
-![Spiceworks ticket closed](screenshots/04-verified-spiceworks-closed.png)
+![Login succeeds after both fixes, confirming the network and auth layers are each restored](screenshots/03-verified-login-success.png)
+
+![Ticket #3 closed with an internal triage note recording root cause, fix and verification](screenshots/04-verified-spiceworks-closed.png)
