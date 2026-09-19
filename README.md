@@ -4,7 +4,11 @@ A collection of simulated support tickets — Linux, AWS, and networking inciden
 
 ## Tickets
 
-| # | Title | Category | Ticket | Status |
-|---|-------|----------|--------|--------|
-| 1 | [SSH Connection Timed Out vs. Permission Denied](linux/01-ssh-timeout-vs-permission-denied/RCA.md) | Linux | Spiceworks #3 | Closed |
-| 2 | [Nginx: Service Fails to Start After Config Change](linux/02-nginx-broken-config/RCA.md) | Linux | Spiceworks #4 | Closed |
+# 
+
+# | # | Title | Category | Ticket | Status |
+
+# |---|-------|----------|--------|--------|
+
+# | 1 | \[SSH Connection Timed Out vs. Permission Denied](linux/01-ssh-timeout-vs-permission-denied/RCA.md) | Linux | Spiceworks #3 | Resolved |
+
