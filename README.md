@@ -1,6 +1,19 @@
 # Cloud Support Troubleshooting Lab
 
-A collection of simulated support tickets — Linux, AWS, and networking incidents tracked through a full ticket lifecycle in Spiceworks Cloud Help Desk, diagnosed and resolved end-to-end, and documented as a structured Root Cause Analysis (RCA) for each.
+Five support tickets worked end to end on a live AWS EC2 instance — each one opened in Spiceworks in the customer's words, diagnosed from the command line, fixed, verified, and closed.
+
+Covers Linux (SSH, systemd, Nginx, inodes), AWS (IAM policies, VPC routing, security groups vs. NACLs) and structured root cause analysis, with screenshots of every error and every fix.
+
+**Start with [Ticket 5](aws/05-route-table-drop/RCA.md):** an instance that's "running and healthy" but unreachable, solved by ruling out each network layer in order.
+
+**Environment:** Ubuntu 26.04 LTS on AWS EC2 (us-west-1) · Spiceworks Cloud Help Desk · sensitive values redacted
+
+## How each ticket was worked
+
+1. Ticket opened in Spiceworks in the customer's words, before any diagnosis
+2. Hypotheses listed and ruled in or out with commands, cheapest check first
+3. Fixed, then verified by repeating the customer's exact failing action
+4. Internal note (root cause / fix / verified) logged, ticket closed, RCA published
 
 ## Tickets
 
